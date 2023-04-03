@@ -1,0 +1,35 @@
+function power(base, exponent){
+let sum = 1;
+    for(let i = 0; i< exponent; i++){
+        sum *= base;
+    }
+    return sum;
+}
+
+function log(num){
+    return Math.log(num);
+}
+
+function factorial(number){
+    let sum = 1;
+    for(let i = 1; i < number + 1; i++){
+        sum *= i;
+    }
+    return sum;
+}
+
+function nth(eval, nth, center){
+let min = eval - center;
+    return (power(min, nth))/factorial(nth);
+}
+
+function series(degree, number, center, eval){
+    let cons = power(number, center);
+    let sum = 0;
+    sum += cons;
+    sum += cons * nth(eval, 1, center);
+    for(let i = 2; i<degree+1; i++){
+        sum += power(log(number), i)*cons*nth(eval, i, center);
+    }
+    return sum;
+}
